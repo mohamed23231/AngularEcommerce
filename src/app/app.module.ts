@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     NotfoundComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { JWTSService } from '../jwts.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   errMessage: string="";
   loadingBtn: boolean=false;
-
-  constructor(private _AuthService: AuthService ,private _Router:Router) { }
+  userDataVar: string | object |null = "";
+  constructor(private _AuthService: AuthService ,private _Router:Router ,private _JWTSService:JWTSService) { }
 
   loginForm: FormGroup = new FormGroup(
     {
@@ -31,6 +32,9 @@ export class LoginComponent {
     this.loadingBtn=true;
     this._AuthService.loginAp(this.loginForm.value).subscribe({
       next: (res) => {
+        console.log(res)
+        localStorage.setItem('userDataToken', res.token)
+        this.saveUserData()
         this._Router.navigate(['./home'])
 
       this.loadingBtn=false;
@@ -42,6 +46,13 @@ export class LoginComponent {
       }
     });
   }
-
+saveUserData(){
+  if(localStorage.getItem('userDataToken')!=null){
+    this.userDataVar=localStorage.getItem('userDataToken');
+    console.log(this.userDataVar)
+    this.userDataVar=this._JWTSService.decodeData(this.userDataVar);
+    console.log(this.userDataVar)
+  }
+}
 
 }

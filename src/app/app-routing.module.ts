@@ -8,6 +8,7 @@ import { BrandComponent } from './brand/brand.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'brand', component: BrandComponent },
   { path: 'login', component: LoginComponent },
   { path:'register', component: RegisterComponent },
+  { path:'resetpw', component: ForgetPasswordComponent },
   { path: 'notfound', component: NotfoundComponent },
   { path: '**', redirectTo: '/notfound' }
 ];

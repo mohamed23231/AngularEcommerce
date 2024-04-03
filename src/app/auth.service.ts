@@ -9,7 +9,11 @@ interface AuthInterface{
   name?: string;
   phone?: string;
 }
-
+interface ForgetPw{
+  email?: string;
+  resetCode?: string;
+  newPassword?: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +24,18 @@ baseApiUrl:string = "https://ecommerce.routemisr.com/api/v1/auth/";
   registerationApi(_data:AuthInterface):Observable<any>{
     return this.httpClient.post(`${this.baseApiUrl}signup`,_data)
   }
+
   loginAp(_data:AuthInterface):Observable<any>{
     return this.httpClient.post(`${this.baseApiUrl}signin`,_data)
+  }
+
+  forgetPwEmail(_data:ForgetPw):Observable<any>{
+    return this.httpClient.post(`${this.baseApiUrl}forgotPasswords`,_data)
+  }
+  forgetPwVerifyCode(_data:ForgetPw):Observable<any>{
+    return this.httpClient.post(`${this.baseApiUrl}verifyResetCode`,_data)
+  }
+  forgetPwResetPassword(_data:ForgetPw):Observable<any>{
+    return this.httpClient.put(`${this.baseApiUrl}resetPassword`,_data)
   }
 }
