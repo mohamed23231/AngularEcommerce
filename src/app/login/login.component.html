@@ -1,0 +1,39 @@
+<div class="register w-75 container">
+    <h2>Login Here:</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+        <div class="alert alert-danger" role="alert" *ngIf="errMessage">
+            {{errMessage}}
+          </div>
+          
+  
+      <div class="my-3">
+        <label for="formGroupEmail" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="formGroupEmail" placeholder="Enter your mail">
+        <div class="invalid-feedback d-block" *ngIf="loginForm.get('email')?.errors?.['email']&&loginForm.get('email')?.touched">
+            Please enter Valid Mail.
+          </div>
+        <div class="invalid-feedback d-block" *ngIf="loginForm.get('email')?.errors?.['required']&&loginForm.get('email')?.touched">
+            Please enter your email.
+          </div>
+      </div>
+
+      <div class="my-3" >
+        <label for="formGroupPassword" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="formGroupPassword" placeholder="Enter password">
+        <div class="invalid-feedback d-block" *ngIf="loginForm.get('password')?.errors?.['required']&&loginForm.get('password')?.touched">
+            Please enter your password.
+          </div>
+        <div class="invalid-feedback d-block" *ngIf="loginForm.get('password')?.errors?.['pattern']&&loginForm.get('password')?.touched">
+            Please enter valid Password.
+          </div>
+      </div>
+
+
+      <div>
+        <button type="submit" class="btn btn-success ms-auto d-block " >
+            <i *ngIf="loadingBtn" class="fa-solid fa-spinner fa-spin"></i> 
+            Login</button>
+      </div>
+
+    </form>
+  </div>

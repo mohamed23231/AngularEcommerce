@@ -1,0 +1,70 @@
+  <div class="register w-75 container">
+    <h2>Register:</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+        <div class="alert alert-danger" role="alert" *ngIf="errMessage">
+            {{errMessage}}
+          </div>
+          
+    <div class="my-3  ">
+        <label for="formGroupExampleInput" class="form-label">Name</label>
+    </div >
+    <input formControlName="name" type="text" class="form-control"  placeholder="Enter Name">
+      <div class="invalid-feedback d-block" *ngIf="registerForm.get('name')?.errors?.['required']&&registerForm.get('name')?.touched">
+        Please enter your name.
+      </div>
+      
+          <div class="invalid-feedback d-block"*ngIf="registerForm.get('name')?.errors?.['minlength']&&registerForm.get('name')?.touched" >
+        Please enter at least 6 Characters .
+      </div>
+  
+      <div class="my-3">
+        <label for="formGroupEmail" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="formGroupEmail" placeholder="Enter your mail">
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('email')?.errors?.['email']&&registerForm.get('email')?.touched">
+            Please enter Valid Mail.
+          </div>
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('email')?.errors?.['required']&&registerForm.get('email')?.touched">
+            Please enter your email.
+          </div>
+    
+      </div>
+      <div class="my-3" >
+        <label for="formGroupPassword" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="formGroupPassword" placeholder="Enter password">
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('password')?.errors?.['required']&&registerForm.get('password')?.touched">
+            Please enter your password.
+          </div>
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('password')?.errors?.['pattern']&&registerForm.get('password')?.touched">
+            Please enter valid Password.
+          </div>
+
+      </div>
+      <div class="my-3">
+        <label for="formGrouprePassword" class="form-label">Rewrite Password</label>
+        <input formControlName="rePassword" type="password" class="form-control" id="formGrouprePassword" placeholder="Rewrite Password">
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('rePassword')?.errors?.['required']&&registerForm.get('rePassword')?.touched">
+            Please enter your password.
+          </div>
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('rePassword')?.errors?.['pattern']&&registerForm.get('rePassword')?.touched">
+            Please enter valid Password.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="registerForm&&registerForm.errors&&registerForm.errors['matchedPassword'] && registerForm.get('rePassword')?.touched">
+            Please enter the same Original Password.
+          </div>
+
+      </div>
+      <div class="my-3">
+        <label for="formGroupphone" class="form-label">phone</label>
+        <input formControlName="phone" type="text" class="form-control" id="formGroupphone" placeholder="Enter Phone Number">
+        <div class="invalid-feedback d-block" *ngIf="registerForm.get('phone')?.errors?.['pattern']&&registerForm.get('phone')?.touched">
+            Please enter valid Phone Number.
+          </div>
+
+      </div>
+      <div >
+        <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success ms-auto d-block " >
+            <i *ngIf="loadingBtn" class="fa-solid fa-spinner fa-spin"></i> 
+            Register</button>
+      </div>
+    </form>
+  </div>
