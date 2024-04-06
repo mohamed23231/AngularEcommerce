@@ -12,8 +12,8 @@ import { JWTSService } from '../jwts.service';
 export class LoginComponent {
   errMessage: string="";
   loadingBtn: boolean=false;
-  userDataVar: string | object |null = "";
-  constructor(private _AuthService: AuthService ,private _Router:Router ,private _JWTSService:JWTSService) { }
+  // userDataVar: string | object |null = "";
+  constructor(private _AuthService: AuthService ,private _Router:Router ) { }
 
   loginForm: FormGroup = new FormGroup(
     {
@@ -34,7 +34,7 @@ export class LoginComponent {
       next: (res) => {
         console.log(res)
         localStorage.setItem('userDataToken', res.token)
-        this.saveUserData()
+        this._AuthService.saveUserData()
         this._Router.navigate(['./home'])
 
       this.loadingBtn=false;
@@ -46,13 +46,5 @@ export class LoginComponent {
       }
     });
   }
-saveUserData(){
-  if(localStorage.getItem('userDataToken')!=null){
-    this.userDataVar=localStorage.getItem('userDataToken');
-    console.log(this.userDataVar)
-    this.userDataVar=this._JWTSService.decodeData(this.userDataVar);
-    console.log(this.userDataVar)
-  }
-}
 
 }

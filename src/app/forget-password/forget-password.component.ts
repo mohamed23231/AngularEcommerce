@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -13,7 +14,7 @@ export class ForgetPasswordComponent {
   firstForm: boolean = true;
   secondForm: boolean = false;
   thirdForm: boolean = false;
-  constructor(private _AuthService: AuthService) {}
+  constructor(private _AuthService: AuthService, private _Router:Router) {}
 
   // First Form to get Verification Code From mail
   forgetPw1stForm: FormGroup = new FormGroup({
@@ -80,6 +81,7 @@ export class ForgetPasswordComponent {
       next: (res) => {
         console.log(res);
         this.loadingBtn = false;
+        this._Router.navigate(['./login'])
       },
       error: (err) => {
         this.errMessage = err.error.message;

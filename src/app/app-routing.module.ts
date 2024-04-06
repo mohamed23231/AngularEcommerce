@@ -9,14 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { authGuardGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'brand', component: BrandComponent },
+  { path: 'home', component: HomeComponent ,canActivate:[authGuardGuard]},
+  { path: 'cart', component: CartComponent,canActivate:[authGuardGuard] },
+  { path: 'products', component: ProductsComponent ,canActivate:[authGuardGuard]},
+  { path: 'categories', component: CategoriesComponent ,canActivate:[authGuardGuard]},
+  { path: 'brand', component: BrandComponent,canActivate:[authGuardGuard] },
   { path: 'login', component: LoginComponent },
   { path:'register', component: RegisterComponent },
   { path:'resetpw', component: ForgetPasswordComponent },
