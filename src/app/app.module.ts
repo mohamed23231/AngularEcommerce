@@ -16,8 +16,13 @@ import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
+    
     AppComponent,
     HomeComponent,
     CartComponent,
@@ -29,13 +34,18 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     NotfoundComponent,
     NavbarComponent,
     FooterComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    ProductDetailsComponent,
+     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { authGuardGuard } from './auth-guard.guard';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path:'register', component: RegisterComponent },
   { path:'resetpw', component: ForgetPasswordComponent },
   { path: 'notfound', component: NotfoundComponent },
+  {path:'productdetails/:id',component: ProductDetailsComponent},
   { path: '**', redirectTo: '/notfound' }
 ];
 

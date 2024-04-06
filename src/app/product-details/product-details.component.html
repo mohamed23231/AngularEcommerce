@@ -1,0 +1,42 @@
+<div class="container d-flex justify-content-center align-content-center w-100">
+
+    <div *ngIf="loadingBtn" class="spinner-border text-primary "  role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+</div>
+  
+<div class="container">
+    <div class="row mt-5 ">
+        <div class="col-md-4  ">
+            <!-- <img class="w-100" [src]="productDetails?.imageCover" alt=""> -->
+            <owl-carousel-o [options]="customOptions" class="w-100">
+
+                <ng-container *ngFor="let slide of productDetails.images">
+                  <ng-template carouselSlide >
+                    <img [src]="slide" >
+                  </ng-template>
+                </ng-container>
+            
+              </owl-carousel-o>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <h5 class="brandName">{{productDetails?.brand?.name}}</h5>
+        <h2 class=" my-2 ">{{productDetails?.title}}</h2>
+        <p class="">{{productDetails?.description}}</p>
+        <div class="category brandName">
+            {{productDetails?.category?.name}} 
+        </div>
+        <div class="d-flex justify-content-between mt-3 ">
+            <span>Price :{{productDetails?.price}}</span>
+            <div>
+                <span><i class="fa-solid fa-star rating-color"></i></span>
+
+                <span>{{productDetails?.ratingsAverage}}</span>
+            </div>
+        </div>
+        <a href="#" class="btn btn-primary w-100 mt-3">Add To Card</a>
+
+    </div>
+
+</div>

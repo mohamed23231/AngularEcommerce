@@ -1,10 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../products.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
-  selector: 'app-home',
+selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit  {
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      }
+    },
+    nav: true
+  }
 
+  products: any[] = [];
+  constructor(private _ProductsService:ProductsService){}
+  ngOnInit() {
+    this._ProductsService.getAllProducts().subscribe({
+      next:data=>{
+        console.log(data.data);
+        this.products=data.data
+      },
+      error:err=>{
+        console.log(err)
+      }
+    });
+  }
 }
