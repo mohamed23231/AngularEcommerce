@@ -21,8 +21,9 @@
         </div>
 
     </div>
+    <input [(ngModel)]="searchInput" type="text" class="w-50 form-control my-5 mx-auto">
     <div class="row">
-        <div class="col-md-2 product" *ngFor="let product of products">
+        <div class="col-md-2 product" *ngFor="let product of products | searchPipe:searchInput">
             <div class="card w-100 cursor-pointer" style="width: 18rem;" [routerLink]="['/productdetails',product.id]">
                 <img [src]="product.imageCover" class="card-img-top" alt="...">
                 <div class="card-body">

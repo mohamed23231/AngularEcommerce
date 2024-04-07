@@ -8,6 +8,7 @@ selector: 'app-home',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit  {
+  searchInput:string ="";
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
