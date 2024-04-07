@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { Product } from '../products';
 @Component({
 selector: 'app-home',
   templateUrl: './home.component.html',
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit  {
     nav: true
   }
 
-  products: any[] = [];
+  products: Product[] = [];
   constructor(private _ProductsService:ProductsService){}
   ngOnInit() {
     this._ProductsService.getAllProducts().subscribe({

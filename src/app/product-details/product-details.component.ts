@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OneProduct } from '../one-product';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ export class ProductDetailsComponent implements OnInit{
   loadingBtn: boolean=false;
 
   productId: number=0;
-  productDetails:any;
+  productDetails:OneProduct | undefined;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -39,7 +40,7 @@ export class ProductDetailsComponent implements OnInit{
       
     });
     this._ProductsService.getSingleProduct(this.productId).subscribe({
-      next:data=>{
+      next:(data)=>{
         this.productDetails=data.data
         this.loadingBtn=false;
 

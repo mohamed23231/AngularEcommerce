@@ -10,11 +10,14 @@
         <div class="col-md-4  ">
             <!-- <img class="w-100" [src]="productDetails?.imageCover" alt=""> -->
             <owl-carousel-o [options]="customOptions" class="w-100">
+                <ng-container *ngIf="productDetails">
 
-                <ng-container *ngFor="let slide of productDetails.images">
+                <ng-container *ngFor="let slide of productDetails!.images">
                   <ng-template carouselSlide >
                     <img [src]="slide" >
                   </ng-template>
+                </ng-container>
+
                 </ng-container>
             
               </owl-carousel-o>
