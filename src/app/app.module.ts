@@ -21,6 +21,8 @@ import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchPipePipe } from './search-pipe.pipe';
+import { NotifierModule } from 'angular-notifier';
+
 @NgModule({
   declarations: [
     
@@ -48,7 +50,8 @@ import { SearchPipePipe } from './search-pipe.pipe';
     RouterModule,
     CarouselModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]

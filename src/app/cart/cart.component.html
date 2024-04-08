@@ -1,1 +1,19 @@
-<p>cart works!</p>
+<div class="col-md-8 my-5" *ngFor="let item of cartItems">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="w-100" [src]="item?.product?.imageCover!" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h6 class="mb-4">{{item?.product?.title!}}</h6>
+                    <div class="d-felx">
+                        <button class="btn btn-light border-black mx-2"><i class="fa-solid fa-trash-can"></i> Remove</button>
+                        <button class="btn btn-light border-black"><i class="fa-regular fa-heart"></i> Move to Wishlist</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h6></h6>
+                </div>
+            </div>
+    </div>
+</div>
